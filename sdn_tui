@@ -2,37 +2,47 @@
 
 FILE1=/tmp/calc1-$$
 FILE2=/tmp/calc2-$$
-DECISION=/tmp/calc-$$
 ERROR=/tmp/calc-err-$$
 
 which gdialog 1> /dev/null && DIALOG=gdialog || DIALOG=dialog 1> /dev/null
 
 
+end () {
+
+    rm -f $FILE1 $FILE2 $ERROR
+
+    exit
+
+}
+
+
 while true; do
 	
-	dialog --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exiting" 8 35 2> $FILE1
+	dialog --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit" 8 35 2> $FILE1
 	value=`cat $FILE1`
 	if [ "$value" = "1" ] || [ "$value" = "2" ]
         then
  	  dialog --yesno "Do you want to confirm\nthe channel conmutation ? " 8 35 
           response=$?
-	  if [ $response -eq 0 ]
-          then
-            curl -X GET http://localhost:8080/channel/1/$value && dialog --infobox "Conmutation Success!" 8 35 		           
-	  elif [ $response -eq 1 ]
-          then
+	  case $response in
+          0 ) 
+            curl -X GET http://localhost:8080/channel/1/$value && dialog --infobox "Conmutation Success!" 8 35
+          ;; 		           
+	  1 )
 	    break
-	    exit
-          fi
+            exit
+          ;;
+          esac
 	elif [ "$value" = "3" ]
         then
           break	  
-        else
+        else	
 	  dialog --infobox "Please follow the instructions!" 8 35
         fi
 		
-	EXIT_STATUS=$?
-
+	EXIT_STATUS=$
+	end	
 done
+
 
 
