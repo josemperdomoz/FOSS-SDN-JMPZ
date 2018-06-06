@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 #Temporary Files
 FILE1=/tmp/calc1-$$
@@ -31,7 +31,7 @@ PORT=1234
 #BACKEND
 while true; do
 
-	$DIALOG --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit" 8 35 2> $FILE1
+	$DIALOG --inputbox "`$GETTEXT \"Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit\"`" 8 35 2> $FILE1
 	value=`cat $FILE1`
 	if [ "$value" = "1" ] || [ "$value" = "2" ]
         then

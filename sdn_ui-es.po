@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-03 02:43+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: José Mauricio Perdomo <josemperdomoz@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: calc_ui:24
+msgid "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit"
+msgstr "Presione 1 para el canal encriptado\nPresione 2 para canal encriptado cuánticamente\nPresione 3 para salir"
+
+#: calc_ui:28
+msgid "Do you want to confirm\nthe channel conmutation ? "
+msgstr "Quiere confirmar la \nconmutación del canal ? "
+
+#: calc_ui:28 calc_ui:31
+msgid "Conmutation to channel $value was a success!\n `cat $FILE2` "
+msgstr "Conmutación del canal $value ha sido un éxito\n `cat $FILE2`"
+
+#: calc_ui:31
+msgid "Please follow the instructions!"
+msgstr "Por favor siga las instrucciones!"
