@@ -21,17 +21,17 @@ end () {
 HOST=localhost
 PORT=1234
 
-
+GETTEXT="gettext -d sdn_ui"
 
 #FRONTEND
 
 
-
+#"`$GETTEXT \"Press 1 for Encrypted Channel\"`"
 
 #BACKEND
 while true; do
 
-	$DIALOG --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit" 8 35 2> $FILE1
+	$DIALOG --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit" 8 35 2> $FILE1 || end
 	value=`cat $FILE1`
 	if [ "$value" = "1" ] || [ "$value" = "2" ]
         then
@@ -39,7 +39,7 @@ while true; do
           response=$?
 	  case $response in
           0 )
-            curl -X GET http://localhost:8080/channel/1/$value > $FILE2 && $DIALOG --infobox "Conmutation to channel $value was a success!\n `cat $FILE2` " 8 35
+            curl -X GET http://localhost:8080/channel/1/$value > $FILE2 && $DIALOG --infobox "Conmutation to channel $value was a success!\n `cat $FILE2` " 8 35 1> /dev/null
           ;;
 	  1 )
 	    break

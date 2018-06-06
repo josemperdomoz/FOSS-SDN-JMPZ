@@ -16,18 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: calc_ui:24
+#: sdn_ui:34
 msgid "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit"
 msgstr "Presione 1 para el canal encriptado\nPresione 2 para canal encriptado cuánticamente\nPresione 3 para salir"
 
-#: calc_ui:28
+#: sdn_ui2:28
 msgid "Do you want to confirm\nthe channel conmutation ? "
 msgstr "Quiere confirmar la \nconmutación del canal ? "
 
-#: calc_ui:28 calc_ui:31
+#: sdn_ui2:28 calc_ui:31
 msgid "Conmutation to channel $value was a success!\n `cat $FILE2` "
 msgstr "Conmutación del canal $value ha sido un éxito\n `cat $FILE2`"
 
-#: calc_ui:31
+#: sdn_ui2:31
 msgid "Please follow the instructions!"
 msgstr "Por favor siga las instrucciones!"

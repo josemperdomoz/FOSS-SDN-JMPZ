@@ -16,9 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: calc_ui:24
-msgid "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit"
-msgstr "Presione 1 para el canal encriptado\nPresione 2 para canal encriptado cuánticamente\nPresione 3 para salir"
+#: sdn_ui:34
+msgid "Press 1 for Encrypted Channel"
+msgstr "Presione 1 para el canal encriptado"
 
 #: calc_ui:28
 msgid "Do you want to confirm\nthe channel conmutation ? "
