@@ -23,6 +23,13 @@ PORT=1234
 
 GETTEXT="gettext -d sdn_ui"
 
+TITLE="`$GETTEXT \"SDN CONTROLLER INTERFACE\"`"
+SUBTITLE="`$GETTEXT \"Which channel you prefer for the link?\"`"
+OPTION_1="`$GETTEXT \"Press 1 for Encrypted Channel\"`"
+OPTION_2="`$GETTEXT \"Press 2 for Quantum Encrypted Channel\"`"
+OPTION_3="`$GETTEXT \"Press 3 to Exit\"`"
+CONFIRM="`$GETTEXT \"Do you want to confirm the channel switch?\"`"
+ERROR="`$GETTEXT \"Please follow the instructions!\"`"
 #FRONTEND
 
 
@@ -31,15 +38,15 @@ GETTEXT="gettext -d sdn_ui"
 #BACKEND
 while true; do
 
-	$DIALOG --inputbox "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit" 8 35 2> $FILE1 || end
+	$DIALOG --title "$TITLE" --menu "$SUBTITLE" 10 60 1 1 "$OPTION_1" 2 "$OPTION_2" 3 "$OPTION_3" 2> $FILE1 || end
 	value=`cat $FILE1`
 	if [ "$value" = "1" ] || [ "$value" = "2" ]
         then
- 	  $DIALOG --yesno "Do you want to confirm\nthe channel conmutation ? " 8 35
+ 	  $DIALOG --yesno "$CONFIRM" 40 40
           response=$?
 	  case $response in
           0 )
-            curl -X GET http://localhost:8080/channel/1/$value > $FILE2 && $DIALOG --infobox "Conmutation to channel $value was a success!\n `cat $FILE2` " 8 35 1> /dev/null
+            curl -X GET http://localhost:8080/channel/1/$value > $FILE2 && $DIALOG --infobox "Conmutation to channel $value was a success!\n `cat $FILE2` " 40 40 1> /dev/null
           ;;
 	  1 )
 	    break
@@ -50,7 +57,7 @@ while true; do
         then
           break
         else
-	  $DIALOG --infobox "Please follow the instructions!" 8 35
+	  $DIALOG --infobox "$ERROR" 40 40
         fi
 
 	EXIT_STATUS=$?

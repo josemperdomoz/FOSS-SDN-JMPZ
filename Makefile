@@ -10,7 +10,7 @@ install: sdn_ui-es.mo
 	ln -sf /usr/local/bin/sdn_ui /usr/local/bin/sdn_net
 	ln -sf /usr/local/bin/sdn_ui2 /usr/local/bin/sdn_net
 
-	install sdn_ui-es.mo /usr/share/locale/vi/LC_MESSAGES/sdn_ui.mo
+	install sdn_ui-es.mo /usr/share/locale/es/LC_MESSAGES/sdn_ui.mo
 
 
 	systemctl start xinetd

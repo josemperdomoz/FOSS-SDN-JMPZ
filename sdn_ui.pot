@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# José Mauricio Perdomo <josemperdomoz@gmail.com>, 2018.
 #
 #, fuzzy
 msgid ""
@@ -16,18 +16,34 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: sdn_ui:34
-msgid "Press 1 for Encrypted Channel\nPress 2 for Quantum Encrypted Channel.\nPress 3 for Exit"
-msgstr "Presione 1 para el canal encriptado\nPresione 2 para canal encriptado cuánticamente\nPresione 3 para salir"
+#: sdn_ui:41
+msgid "SDN CONTROLLER INTERFACE"
+msgstr ""
 
-#: sdn_ui2:28
-msgid "Do you want to confirm\nthe channel conmutation ? "
-msgstr "Quiere confirmar la \nconmutación del canal ? "
+#: sdn_ui:41
+msgid "Which channel you prefer for the link?"
+msgstr ""
 
-#: sdn_ui2:28 calc_ui:31
-msgid "Conmutation to channel $value was a success!\n `cat $FILE2` "
-msgstr "Conmutación del canal $value ha sido un éxito\n `cat $FILE2`"
+#: sdn_ui:41
+msgid "Press 1 for Encrypted Channel"
+msgstr ""
 
-#: sdn_ui2:31
+#: sdn_ui:41
+msgid "Press 2 for Quantum Encrypted Channel"
+msgstr ""
+
+#: sdn_ui:41
+msgid "Press 3 to Exit"
+msgstr ""
+
+#: sdn_ui:45
+msgid "Do you want to confirm the channel switch?"
+msgstr ""
+
+#: sdn_ui:59
 msgid "Please follow the instructions!"
-msgstr "Por favor siga las instrucciones!"
+msgstr ""
+
+#: sdn_ui:48
+#msgid "Conmutation to channel $value was a success!\n `cat $FILE2` "
+#msgstr "Conmutación del canal $value ha sido un éxito\n `cat $FILE2`"
