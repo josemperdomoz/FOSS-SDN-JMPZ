@@ -30,19 +30,6 @@ You must also enable locale es_HN.UTF-8. You can do this the following way:
 # 4. Localization 
 	LANG=es_HN.UTF-8
 	sdn_gui 
-	
-
-
-
-
-
-
-
-
-
-    ryu-manager rest_forward.py
-		
-    ./sdn_tui
     
 
 
