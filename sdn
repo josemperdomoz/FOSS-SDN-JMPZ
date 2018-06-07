@@ -1,51 +1,8 @@
 #!/bin/bash
 
-
-#echo "Press 1 to switch to Channel 1, or Press 2 to switch to Quantum Encrypted Channel 2"
 read ACTION
 
+curl -X GET localhost:8080/channel/1/$ACTION
+EXIT_STATUS=$?
 
-if [ $ACTION = "1" -o $ACTION = "2" ]
-then
-	curl -X GET --silent  http://localhost:8080/channel/1/$ACTION
-	exit 0 	
-else 
-	exit 5 #Invalid Option 
-fi
-
-
-
-
-
-
-
-
-
-
-
-
-#if [ $ACTION = "0"]
-#then
-#	exit 5
-#fi
-
-
-
-
-
-
-# TEST INPUT TO SEE IF IT WAS A VALID INTEGER COMMAND
-#case ${ACTION#[-+]} in
-#	*[!0-9]* | '') 
-#		exit 1
-#		;; # the user input was not a valid digit (contained text or other)
-#	* ) 
-#		if [ $ACTION -eq 0 ] ;then
-#			exit 0 	# user wants to exit
-#			curl -X GET --silent  http://localhost:8080/channel/1/$ACTION > /dev/null
-#			exit 10 # HTTP request was sent successfully
-#		else
-#			exit 2 # channel number was not in range 1-2
-#		fi 
-#		;;
-#esac
+exit $EXIT_STATUS

@@ -10,16 +10,19 @@ which gdialog 1> /dev/null && DIALOG=gdialog || DIALOG=dialog 1> /dev/null
 
 end () {
 
-    rm -f $FILE1 $FILE2 $ERROR
+    #rm -f $FILE1 $FILE2 $ERROR
 
     exit
 
 }
 
+#Executable FILE
+SDN=sdn
 
 #Parameters for sdn_net tool
 HOST=localhost
 PORT=1234
+NET="nc $HOST $PORT"
 
 GETTEXT="gettext -d sdn_ui"
 
@@ -28,38 +31,76 @@ SUBTITLE="`$GETTEXT \"Which channel you prefer for the link?\"`"
 OPTION_1="`$GETTEXT \"Press 1 for Encrypted Channel\"`"
 OPTION_2="`$GETTEXT \"Press 2 for Quantum Encrypted Channel\"`"
 OPTION_3="`$GETTEXT \"Press 3 to Exit\"`"
-CONFIRM="`$GETTEXT \"Do you want to confirm the channel switch?\"`"
+CONFIRM="`$GETTEXT \"Confirm\"`"
 ERROR="`$GETTEXT \"Please follow the instructions!\"`"
+#SUCCESS="`$GETTEXT \"Switch to channel $value was a success!\n `cat $FILE2`\"`"
 #FRONTEND
 
 
 #"`$GETTEXT \"Press 1 for Encrypted Channel\"`"
 
-#BACKEND
+#Switch to channel $value was a success!\n `cat $FILE2`
+
+#LOOP that checks user input and selected file (tui, gui, network)
 while true; do
+  #TUI
+  val=`basename $0`
+  echo $val
+  if [ `basename $0` = "sdn_ui" ]
+  then
+    printf "Choose which channel you want to switch:\n1. Encrypted Channel\n2. Quantum Encrypted Channel\n"
+    read ACTION
+    if [ "$ACTION" = "1" -o "$ACTION" = "2" ]
+    then
+      echo $ACTION | $SDN > $FILE2
+      if grep -qF "Switched" $FILE2
+      then
+        printf "Successful switch to Channel : $ACTION\n"
+      fi
+    elif [ "$ACTION" = "0" ]
+    then
+      end
 
-	$DIALOG --title "$TITLE" --menu "$SUBTITLE" 10 60 1 1 "$OPTION_1" 2 "$OPTION_2" 3 "$OPTION_3" 2> $FILE1 || end
-	value=`cat $FILE1`
-	if [ "$value" = "1" ] || [ "$value" = "2" ]
-        then
- 	  $DIALOG --yesno "$CONFIRM" 40 40
-          response=$?
-	  case $response in
-          0 )
-            curl -X GET http://localhost:8080/channel/1/$value > $FILE2 && $DIALOG --infobox "Conmutation to channel $value was a success!\n `cat $FILE2` " 40 40 1> /dev/null
-          ;;
-	  1 )
-	    break
-            exit
-          ;;
-          esac
-	elif [ "$value" = "3" ]
-        then
-          break
-        else
-	  $DIALOG --infobox "$ERROR" 40 40
-        fi
+    else
+      printf "Invalid Choice! Please choose again!"
+    fi
 
-	EXIT_STATUS=$?
-	end
+
+  #GUI
+  elif [ `basename $0` = "sdn_gui" ]
+  then
+    $DIALOG --title "$TITLE" --menu "$SUBTITLE" 10 80 1 1 "$OPTION_1" 2 "$OPTION_2" 3 "$OPTION_3" 2> $FILE1 || end
+	  ACTION=`cat $FILE1`
+    if [ "$ACTION" = "1" ] || [ "$ACTION" = "2" ]
+    then
+ 	    $DIALOG --title "$TITLE" 40 40 --yesno "$CONFIRM" 40 40
+      response=$?
+	    case $response in
+        0 )
+        echo $ACTION | $SDN > $FILE2 && $DIALOG --title "$TITLE" --infobox "Switch to channel $ACTION was a success!\n `cat $FILE2`" 40 40 1> /dev/null
+        ;;
+	      1 )
+	      end
+        ;;
+        esac
+	   elif [ "$ACTION" = "3" ]
+     then
+       break
+     else
+	     $DIALOG --infobox "$ERROR" 40 40
+     fi
+
+  #Network
+  elif [ `basename $0` = "sdn_net" ]
+  then
+    $DIALOG --title "$TITLE" --menu "$SUBTITLE" 10 80 1 1 "$OPTION_1" 2 "$OPTION_2" 3 "$OPTION_3" 2> $FILE1 || end
+	  ACTION=`cat $FILE1`
+
+    if echo $ACTION | $NET
+    then
+      echo $ACTION | $NET  > $FILE2 && $DIALOG --title "$TITLE" --infobox "Switch to channel $ACTION was a success!\n `cat $FILE2` through network" 40 40 1> /dev/null
+    else
+      $DIALOG --infobox "$ERROR" 40 40
+    fi
+  fi
 done

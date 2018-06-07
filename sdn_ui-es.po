@@ -37,13 +37,22 @@ msgid "Press 3 to Exit"
 msgstr "Presione 3 para Salir"
 
 #: sdn_ui:45
-msgid "Do you want to confirm the channel switch?"
-msgstr "Quiere confirmar la conmutación del canal?"
+msgid "Confirm"
+msgstr "Confirmación"
 
 #: sdn_ui:59
 msgid "Please follow the instructions!"
 msgstr "Por favor siga las instrucciones!"
 
-#: sdn_ui:48
-#msgid "Conmutation to channel $value was a success!\n `cat $FILE2` "
+
+
+
+
+
+
+#: sdn_ui:52
+#msgid "Switch to channel $value was a success!\n `cat $FILE2`"
 #msgstr "Conmutación del canal $value ha sido un éxito\n `cat $FILE2`"
+
+
+#Conmutación del canal $value ha sido un éxito\n `cat $FILE2`

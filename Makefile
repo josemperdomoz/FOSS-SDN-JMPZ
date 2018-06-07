@@ -1,5 +1,5 @@
 install: sdn_ui-es.mo
-	install sdn sdn_ui sdn_ui2 /usr/local/bin
+	install sdn sdn_ui sdn_gui /usr/local/bin
 
 	which gdialog >/dev/null 2>&1 || install gdialog /usr/local/bin
 
@@ -8,7 +8,7 @@ install: sdn_ui-es.mo
 	install sdn.xinetd /etc/xinetd.d/sdn
 
 	ln -sf /usr/local/bin/sdn_ui /usr/local/bin/sdn_net
-	ln -sf /usr/local/bin/sdn_ui2 /usr/local/bin/sdn_net
+	ln -sf /usr/local/bin/sdn_ui /usr/local/bin/sdn_gui
 
 	install sdn_ui-es.mo /usr/share/locale/es/LC_MESSAGES/sdn_ui.mo
 
